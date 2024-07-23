@@ -12,6 +12,7 @@ public class RectangleArea {
         // Prompt the user to enter the width of the rectangle
         System.out.print("Enter the width of the rectangle: ");
         double width = scanner.nextDouble();
+	// added code
 
         // Calculate the area of the rectangle
         double area = length * width;
