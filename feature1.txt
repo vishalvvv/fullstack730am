@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class RectangleCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continueCalculations = true;
+
+        while (continueCalculations) {
+            System.out.println("Rectangle Calculator");
+            System.out.println("1. Calculate Area");
+            System.out.println("2. Calculate Perimeter");
+            System.out.println("3. Calculate Both");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            if (choice == 4) {
+                continueCalculations = false;
+                System.out.println("Exiting the program.");
+                break;
+            }
+
+            double length = getPositiveInput(scanner, "Enter the length of the rectangle: ");
+            double width = getPositiveInput(scanner, "Enter the width of the rectangle: ");
+
+            switch (choice) {
+                case 1:
+                    double area = calculateArea(length, width);
+                    System.out.println("The area of the rectangle is: " + area);
+                    break;
+                case 2:
+                    double perimeter = calculatePerimeter(length, width);
+                    System.out.println("The perimeter of the rectangle is: " + perimeter);
+                    break;
+                case 3:
+                    area = calculateArea(length, width);
+                    perimeter = calculatePerimeter(length, width);
+                    System.out.println("The area of the rectangle is: " + area);
+                    System.out.println("The perimeter of the rectangle is: " + perimeter);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    private static double getPositiveInput(Scanner scanner, String prompt) {
+        double value;
+        while (true) {
+            System.out.print(prompt);
+            value = scanner.nextDouble();
+            if (value > 0) {
+                break;
+            }
+            System.out.println("Please enter a positive number.");
+        }
+        return value;
+    }
+
+    private static double calculateArea(double length, double width) {
+        return length * width;
+    }
+
+    private static double calculatePerimeter(double length, double width) {
+        return 2 * (length + width);
+    }
+}
+
